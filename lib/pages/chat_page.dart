@@ -9,12 +9,20 @@ import 'package:flutter/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   ChatPage({super.key});
   static String id = 'ChatPage';
+
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   final _controller = ScrollController();
+
   CollectionReference messages =
       FirebaseFirestore.instance.collection(kMessagesCollection);
+
   TextEditingController controller = TextEditingController();
 
   @override
